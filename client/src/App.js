@@ -1,10 +1,34 @@
 import React from 'react';
 
-function App() {
+import BookAPI from './utils/BookAPI'
+
+//Using Pages
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom'
+import Search from './pages/Search'
+import Saved from './pages/Saved'
+
+
+const App = () => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <Router>
+      <div>
+        <Link to="/">Search</Link>
+        <Link to="/saved">Saved</Link>
+        <Switch>
+          <Route exact path="/">
+            <Search />
+          </Route>
+          <Route path="/saved">
+            <Saved />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
