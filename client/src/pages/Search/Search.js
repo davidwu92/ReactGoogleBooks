@@ -1,41 +1,52 @@
 import React, {useContext} from 'react'
+import BookContext from '../../utils/BookContext'
 
 const Search = () =>{
   
-  // const { searchedBooks, handleSearchBook, handleInputChange } = useContext(SearchedBookContext)
-
+  const { searchedBook, searchedBooks, handleInputChange, findBooks, saveBook } = useContext(BookContext)
 
   return (
     <> 
       <div>
         {/* HEADER */}
         <h1>(React) Google Books Search</h1>
-        <p>Search for and save books of interest.</p>
+        <h3>Search for and save books of interest.</h3>
       </div>
 
       <form>
         {/* SEARCH FORM */}
         <p>
-          <label htmlFor="book">book</label>
+          <label htmlFor="searchedBook">Search for a book</label>
           <input 
             type="text"
-            name="book"
-            id="book"
-            // value={book}
-            // onChange={handleInputChange}
+            name="searchedBook"
+            id="searchedBook"
+            value={searchedBook}
+            onChange={handleInputChange}
             />
         </p>
         <p>
           <button 
-            // onClick={findBooks}
+            onClick={findBooks}
           >
-              Search for book</button>
+              Search</button>
         </p>
       </form>
 
       <div>
         {/* RENDER BOOKS */}
-
+        {
+          searchedBooks.length ? searchedBooks.map(book => (
+            <div>
+              <h3>Title: {book.volumeInfo.title}</h3>
+              <h2>Author(s): {book.volumeInfo.authors}</h2>
+              {/* <p>Description: </p> */}
+              <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="Photo"/>
+              <a href={book.volumeInfo.previewLink}>Preview link</a>
+              <button onClick={()=>saveBook(book)}>Save this book</button>
+            </div>
+          )) : null
+        }
       </div>
     </>
   )
