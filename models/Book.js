@@ -1,7 +1,7 @@
 module.exports = (model, Schema) => {
   const Book = new Schema({
     title: String,
-    authors: String,
+    authors: [{ type: String }],
     image: String,
     link: String,
   })
