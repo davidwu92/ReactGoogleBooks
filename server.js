@@ -3,7 +3,7 @@ const express = require('express')
 const {join} = require('path')
 
 const app = express()
- 
+
 //middlewares
 app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({extended:true}))

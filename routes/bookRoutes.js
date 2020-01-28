@@ -10,7 +10,6 @@ module.exports = app => {
   
   //Post one book.
   app.post('/books', (req, res) => {
-    console.log('ping')
     Book.create(req.body)
       .then(book => res.json(book))
       .catch(e => console.error(e))

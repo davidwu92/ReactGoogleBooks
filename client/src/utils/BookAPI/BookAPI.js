@@ -11,7 +11,7 @@ const BookAPI = {
   //we probably don't need this one, unless we want comments!
   updateBook:  (id, values) =>axios.put(`/books/${id}`, values),
 
-  deleteBook:  (id) =>axios.delete(`/items/${id}`),
+  deleteBook:  (id) =>axios.delete(`/books/${id}`),
 }
 
 export default BookAPI
